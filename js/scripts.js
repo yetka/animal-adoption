@@ -1,14 +1,16 @@
-
 function Pet (name, type, age, color) {
   this.name = name;
   this.type = type;
   this.age = age;
   this.color = color;
+  this.owner;
 
-  this.adoptionAvailable = true;
 }
 
-// Pet.prototype.
+function Adoptor (firstName, lastName, street, city, state, zip) {
+  this.name = firstName + " " + lastName;
+  this.address = street + " " + city + ", " + state + " " + zip;
+}
 
 $(document).ready(function() {
 
@@ -23,32 +25,37 @@ $(document).ready(function() {
     $(".animalList").show();
 
 
+      $("#availableAdoptions").append(
+                          '<span class="show-animal"><li>' +
+                           newPet.name +
+                          '</li></span>')
 
-    console.log(newPet);
+    $(".show-animal").last().click(function() {
+      $(".displayAnimal").show();
+      $(".name").text(newPet.name);
+      $(".type").text(newPet.type);
+      $(".age").text(newPet.age);
+      $(".color").text(newPet.color);
 
-    $("#availableAdoptions").append(
-                        '<span class="show-animal"><li>' +
-                         newPet.name +
-                        '</li></span>')
+      $(".adopt").click(function() {
+        $(".adoptorInfo").show();
+        $("form#adoptionRequest").submit(function(event) {
+          event.preventDefault();
+
+          var firstName = $("#firstName").val();
+          var lastName = $("#lastName").val();
+          var street = $("#street").val();
+          var city = $("#city").val();
+          var state = $("#state").val()
+          var zip = $("#zip").val();
+
+          var newOwner = new Adoptor(firstName, lastName, street, city, state, zip);
+          newPet.owner = newOwner;
 
 
+        })
 
-
-      $(".show-animal").last().click(function() {
-        $(".displayAnimal").show();
-        $(".name").text(newPet.name);
-        $(".type").text(newPet.type);
-        $(".age").text(newPet.age);
-        $(".color").text(newPet.color);
-
-        $(".adopt").click(function() {
-          $(".adoptorInfo").show();
-          $("form#adoptionRequest").submit(function(event) {
-            event.preventDefault();
-            newPet.adoptionAvailable = false;
-            console.log(newPet);
-          })
-        });
       });
+    })
   })
 })

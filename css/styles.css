@@ -1,3 +1,12 @@
 .animalList, .displayAnimal, .adoptorInfo {
   display: none;
 }
+
+.adopt:hover{
+  cursor: pointer;
+}
+
+.adopt {
+  text-decoration: underline;
+  color: blue;
+}
