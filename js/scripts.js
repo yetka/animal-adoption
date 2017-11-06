@@ -20,7 +20,6 @@ $(document).ready(function() {
 
     var newPet = new Pet(name,type,age,color);
 
-    console.log(newPet);
 
     $("#availableAdoptions").append(
                         '<span class="show-animal"><li>' +
@@ -34,8 +33,6 @@ $(document).ready(function() {
       $(".age").text(newPet.age);
       $(".color").text(newPet.color);
     });
-
-
 
   })
 })
