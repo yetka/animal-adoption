@@ -1,13 +1,16 @@
-
 function Pet (name, type, age, color) {
   this.name = name;
   this.type = type;
   this.age = age;
   this.color = color;
+  this.owner;
   this.adoptionAvailable = true;
 }
 
-// Pet.prototype.
+function Adoptor (firstName, lastName, street, city, state, zip) {
+  this.name = firstName + " " + lastName;
+  this.address = street + " " + city + ", " + state + " " + zip;
+}
 
 $(document).ready(function() {
 
@@ -20,17 +23,12 @@ $(document).ready(function() {
 
     var newPet = new Pet(name,type,age,color);
 
-
-
-    console.log(newPet);
     if (newPet.adoptionAvailable) {
       $("#availableAdoptions").append(
                           '<span class="show-animal"><li>' +
                            newPet.name +
                           '</li></span>')
     }
-
-
 
     $(".show-animal").last().click(function() {
       $(".displayAnimal").show();
@@ -43,8 +41,18 @@ $(document).ready(function() {
         $(".adoptorInfo").show();
         $("form#adoptionRequest").submit(function(event) {
           event.preventDefault();
+
+          var firstName = $("#firstName").val();
+          var lastName = $("#lastName").val();
+          var street = $("#street").val();
+          var city = $("#city").val();
+          var state = $("#state").val()
+          var zip = $("#zip").val();
+
+          var newOwner = new Adoptor(firstName, lastName, street, city, state, zip);
+          newPet.owner = newOwner;
+
           newPet.adoptionAvailable = false;
-          console.log(newPet);
         })
       });
     })
