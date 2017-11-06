@@ -4,6 +4,7 @@ function Pet (name, type, age, color) {
   this.type = type;
   this.age = age;
   this.color = color;
+
   this.adoptionAvailable = true;
 }
 
@@ -19,34 +20,35 @@ $(document).ready(function() {
     var color = $("#animalColor").val();
 
     var newPet = new Pet(name,type,age,color);
+    $(".animalList").show();
 
 
 
     console.log(newPet);
-    if (newPet.adoptionAvailable) {
-      $("#availableAdoptions").append(
-                          '<span class="show-animal"><li>' +
-                           newPet.name +
-                          '</li></span>')
-    }
+
+    $("#availableAdoptions").append(
+                        '<span class="show-animal"><li>' +
+                         newPet.name +
+                        '</li></span>')
 
 
 
-    $(".show-animal").last().click(function() {
-      $(".displayAnimal").show();
-      $(".name").text(newPet.name);
-      $(".type").text(newPet.type);
-      $(".age").text(newPet.age);
-      $(".color").text(newPet.color);
 
-      $(".adopt").click(function() {
-        $(".adoptorInfo").show();
-        $("form#adoptionRequest").submit(function(event) {
-          event.preventDefault();
-          newPet.adoptionAvailable = false;
-          console.log(newPet);
-        })
+      $(".show-animal").last().click(function() {
+        $(".displayAnimal").show();
+        $(".name").text(newPet.name);
+        $(".type").text(newPet.type);
+        $(".age").text(newPet.age);
+        $(".color").text(newPet.color);
+
+        $(".adopt").click(function() {
+          $(".adoptorInfo").show();
+          $("form#adoptionRequest").submit(function(event) {
+            event.preventDefault();
+            newPet.adoptionAvailable = false;
+            console.log(newPet);
+          })
+        });
       });
-    })
   })
 })

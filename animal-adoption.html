@@ -10,6 +10,8 @@
   </head>
   <body>
     <div class="container">
+      <h1>Animal Adoption Agency</h1>
+      <h3>Please fill this form for animal to adopt</h3>
       <div class="row">
         <div class="col-md-6">
           <form id="addAnimal">
@@ -79,16 +81,29 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
           <div class="animalList">
+            <h2>This is a list of animals sill available for adoption:</h2>
+            <p>(click for more details)</p>
             <ul id="availableAdoptions">
 
             </ul>
           </div>
         </div>
-        <div class="col-md-6 displayAnimal">
+
+        <div class="col-md-4">
+          <div class="animalList">
+            <h2>This is a list of animals NOT available for adoption anymore:</h2>
+            <p>(click for more details)</p>
+            <ul id="notAvailableAdoptions">
+
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4 displayAnimal">
           <!-- to display animal info after click -->
-          <h2> Name: <span class="name"></span></h2>
+          <h2>Details:</h2>
+          <h4> Name: <span class="name"></span></h4>
           <p> Animal Type: <span class="type"></span></p>
           <p> Age: <span class="age"></span></p>
           <p> Color: <span class="color"></span></p>
