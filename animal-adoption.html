@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/scripts.js"></script>
+    <title>Adoption Agency</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <form id="addAnimal">
+            <div class="form-group">
+              <label for="animalName">Animal Name:</label>
+              <input id="animalName" type="text" class="form-control">
+            </div>
+            <p>Type of Pet:</p>
+            <div class="radio">
+              <label>
+                <input type="radio" name="animalType" value="dog">
+                Dog
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="animalType" value="cat">
+                Cat
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="animalType" value="rabbit">
+                Rabbit
+              </label>
+            </div>
+            <div class="form-group">
+              <label for="animalAge">Age</label>
+              <input id="animalAge" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+              <label for="animalColor">Color:</label>
+              <input id="animalColor" type="text" class="form-control">
+            </div>
+            <button type="submit" class="btn">Add Pet</button>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="animalList">
+            <ul id="availableAdoptions">
+
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <!-- to display animal info after click -->
+          <h2 class="name"></h2>
+          <p class="type"></p>
+          <p class="age"></p>
+          <p class="color"></p>
+          <p class="adopt">Adopt!</p>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
