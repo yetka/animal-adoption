@@ -45,8 +45,8 @@ $(document).ready(function() {
           event.preventDefault();
           newPet.adoptionAvailable = false;
           console.log(newPet);
-      })
-    });
-
+        })
+      });
+    })
   })
 })
