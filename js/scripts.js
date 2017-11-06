@@ -7,7 +7,7 @@ function Pet (name, type, age, color) {
   this.adoptionAvailable = true;
 }
 
-Pet.prototype.
+// Pet.prototype.
 
 $(document).ready(function() {
 
@@ -19,5 +19,13 @@ $(document).ready(function() {
     var color = $("#animalColor").val();
 
     var newPet = new Pet(name,type,age,color);
+    console.log(newPet);
+
+    $(".clickable").last().click(function() {
+      $(".name").text(newPet.name);
+      $(".type").text(newPet.type);
+      $(".age").text(newPet.age);
+      $(".color").text(newPet.color):
+    })
   })
 })
