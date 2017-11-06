@@ -22,19 +22,20 @@ $(document).ready(function() {
 
     console.log(newPet);
 
+    $("#availableAdoptions").append(
+                        '<span class="show-animal"><li>' +
+                         newPet.name +
+                        '</li></span>')
+
     $(".show-animal").last().click(function() {
+      $(".displayAnimal").show();
       $(".name").text(newPet.name);
       $(".type").text(newPet.type);
       $(".age").text(newPet.age);
-      $(".color").text(newPet.color):
-    })
+      $(".color").text(newPet.color);
+    });
 
 
-    $("#availableAdoptions").append('<div class="show-animal">' +
-                        '<li>' +
-                         newPet.name +
-                        '</li>' +
-                        '</div>')
 
   })
 })
