@@ -19,5 +19,11 @@ $(document).ready(function() {
     var color = $("#animalColor").val();
 
     var newPet = new Pet(name,type,age,color);
+
+    $("#availableAdoptions").append('<div class="show-animal">' +
+                        '<li>' +
+                         newPet.name +
+                        '</li>' +
+                        '</div>')
   })
 })
