@@ -21,10 +21,16 @@ $(document).ready(function() {
     var newPet = new Pet(name,type,age,color);
 
 
-    $("#availableAdoptions").append(
-                        '<span class="show-animal"><li>' +
-                         newPet.name +
-                        '</li></span>')
+
+    console.log(newPet);
+    if (newPet.adoptionAvailable) {
+      $("#availableAdoptions").append(
+                          '<span class="show-animal"><li>' +
+                           newPet.name +
+                          '</li></span>')
+    }
+
+
 
     $(".show-animal").last().click(function() {
       $(".displayAnimal").show();
@@ -32,6 +38,14 @@ $(document).ready(function() {
       $(".type").text(newPet.type);
       $(".age").text(newPet.age);
       $(".color").text(newPet.color);
+
+      $(".adopt").click(function() {
+        $(".adoptorInfo").show();
+        $("form#adoptionRequest").submit(function(event) {
+          event.preventDefault();
+          newPet.adoptionAvailable = false;
+          console.log(newPet);
+      })
     });
 
   })
