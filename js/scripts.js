@@ -1,3 +1,4 @@
+//back-end
 function Pet (name, type, age, color) {
   this.name = name;
   this.type = type;
@@ -12,8 +13,10 @@ function Adoptor (firstName, lastName, street, city, state, zip) {
   this.address = street + " " + city + ", " + state + " " + zip;
 }
 
-
+//front-end
 $(document).ready(function() {
+  var pets = [];
+  var index = 0;
 
   $("#addAnimal").submit(function(event) {
     event.preventDefault();
@@ -23,6 +26,7 @@ $(document).ready(function() {
     var color = $("#animalColor").val();
 
     var newPet = new Pet(name,type,age,color);
+    pets.push(newPet);
     $(".animalList").show();
 
     $("#availableAdoptions").append(
@@ -31,35 +35,48 @@ $(document).ready(function() {
                         '</li></span>')
 
     $(".show-animal").last().click(function() {
+      index = pets.indexOf(newPet);
       $(".displayAnimal").show();
       $(".name").text(newPet.name);
       $(".type").text(newPet.type);
       $(".age").text(newPet.age);
       $(".color").text(newPet.color);
-      $(".status").text("Available for adoption");
-
-      $(".adopt").click(function() {
-        $(".adoptorInfo").show();
-        $("form#adoptionRequest").submit(function(event) {
-          event.preventDefault();
-
-          var firstName = $("#firstName").val();
-          var lastName = $("#lastName").val();
-          var street = $("#street").val();
-          var city = $("#city").val();
-          var state = $("#state").val()
-          var zip = $("#zip").val();
-
-          if (!firstName || !lastName || !street || !city || !state || !zip) {
-            alert("Please fill out all information");
-          } else {
-            var newOwner = new Adoptor(firstName, lastName, street, city, state, zip);
-            newPet.owner = newOwner;
-            $(".status").text("Adopted by: " + newPet.owner.name + " " + newPet.owner.address);
-            $(".adopt").hide();
-          }
-        })
-      });
+      if (pets[index].owner) {
+        $(".status").text("Adopted by: " + pets[index].owner.name + " " + pets[index].owner.address);
+        $(".adopt").hide();
+      } else {
+        $(".status").text("Available for adoption");
+        $(".adopt").show();
+      }
     })
   })
+
+
+  $(".adopt").click(function() {
+    $(".adoptorInfo").show();
+    $("form#adoptionRequest").submit(function(event) {
+      event.preventDefault();
+
+      var firstName = $("#firstName").val();
+      var lastName = $("#lastName").val();
+      var street = $("#street").val();
+      var city = $("#city").val();
+      var state = $("#state").val()
+      var zip = $("#zip").val();
+
+      if (!firstName || !lastName || !street || !city || !state || !zip) {
+        alert("Please fill out all information");
+      } else {
+        var newOwner = new Adoptor(firstName, lastName, street, city, state, zip);
+        pets[index].owner = newOwner;
+        $(".status").text("Adopted by: " + pets[index].owner.name + " " + pets[index].owner.address);
+        $(".adopt").hide();
+      }
+
+      //here some function to remove pet from available list to NOT available list
+
+      console.log(pets[index].owner);
+      $(".adoptorInfo").hide();
+    })
+  });
 })
