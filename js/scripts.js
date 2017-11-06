@@ -12,6 +12,7 @@ function Adoptor (firstName, lastName, street, city, state, zip) {
   this.address = street + " " + city + ", " + state + " " + zip;
 }
 
+
 $(document).ready(function() {
 
   $("#addAnimal").submit(function(event) {
@@ -24,11 +25,10 @@ $(document).ready(function() {
     var newPet = new Pet(name,type,age,color);
     $(".animalList").show();
 
-
-      $("#availableAdoptions").append(
-                          '<span class="show-animal"><li>' +
-                           newPet.name +
-                          '</li></span>')
+    $("#availableAdoptions").append(
+                        '<span class="show-animal"><li>' +
+                         newPet.name +
+                        '</li></span>')
 
     $(".show-animal").last().click(function() {
       $(".displayAnimal").show();
@@ -36,6 +36,7 @@ $(document).ready(function() {
       $(".type").text(newPet.type);
       $(".age").text(newPet.age);
       $(".color").text(newPet.color);
+      $(".status").text("Available for adoption");
 
       $(".adopt").click(function() {
         $(".adoptorInfo").show();
@@ -49,12 +50,15 @@ $(document).ready(function() {
           var state = $("#state").val()
           var zip = $("#zip").val();
 
-          var newOwner = new Adoptor(firstName, lastName, street, city, state, zip);
-          newPet.owner = newOwner;
-
-
+          if (!firstName || !lastName || !street || !city || !state || !zip) {
+            alert("Please fill out all information");
+          } else {
+            var newOwner = new Adoptor(firstName, lastName, street, city, state, zip);
+            newPet.owner = newOwner;
+            $(".status").text("Adopted by: " + newPet.owner.name + " " + newPet.owner.address);
+            $(".adopt").hide();
+          }
         })
-
       });
     })
   })
