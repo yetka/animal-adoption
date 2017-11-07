@@ -35,6 +35,7 @@ $(document).ready(function() {
                         '</li></span>')
 
     $(".show-animal").last().click(function() {
+
       index = pets.indexOf(newPet);
       $(".displayAnimal").show();
       $(".name").text(newPet.name);
@@ -50,7 +51,6 @@ $(document).ready(function() {
       }
     })
   })
-
 
   $(".adopt").click(function() {
     $(".adoptorInfo").show();
@@ -71,12 +71,10 @@ $(document).ready(function() {
         pets[index].owner = newOwner;
         $(".status").text("Adopted by: " + pets[index].owner.name + " " + pets[index].owner.address);
         $(".adopt").hide();
+        $(".adoptorInfo").hide();
       }
 
-      //here some function to remove pet from available list to NOT available list
 
-      console.log(pets[index].owner);
-      $(".adoptorInfo").hide();
     })
   });
 })
